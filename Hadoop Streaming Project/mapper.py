@@ -18,7 +18,7 @@ WEIGHT_KG = 15
 #SUM_OVERWEIGHT = 0
 
 for line in sys.stdin:
-    # Usuwamy białe znaki na początku i końcu oraz dzielimy linię na kolumny na podstawie przecinków
+    # Usuwamy białe znaki na początku i końcu oraz dzielimy linię na kolumny na podstawie srednikow:
     values = line.strip().split(";")
     if len(values) > max(LEAGUE_ID, WAGE_EUR, AGE, WEIGHT_KG):
         if int(values[WEIGHT_KG]) < 100:
