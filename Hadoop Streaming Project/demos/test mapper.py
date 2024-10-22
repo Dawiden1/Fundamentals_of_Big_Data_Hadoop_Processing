@@ -9,7 +9,7 @@ AGE = 12
 WEIGHT_KG = 15
 SUM_OVERWEIGHT = 0
 
-with open('partialMAPPER2.csv', 'r', encoding='utf-8') as file:
+with open('./partialMAPPER2.csv', 'r', encoding='utf-8') as file:
     #next(file)
     for line in file:
         # Usuwamy białe znaki na początku i końcu oraz dzielimy linię na kolumny na podstawie przecinków

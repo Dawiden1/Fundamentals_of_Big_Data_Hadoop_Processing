@@ -20,4 +20,4 @@ for line in sys.stdin:
             wage = values[WAGE_EUR]
             age = values[AGE]
             league = values[LEAGUE_ID]
-            print(f"{league.strip()}\t{wage.strip()}\t{age.strip()}")
+            print(f"{league.strip()}\t{wage.strip()},{age.strip()}")
