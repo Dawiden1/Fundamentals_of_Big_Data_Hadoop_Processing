@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 
 import sys  # Umożliwia pracę z wejściem i wyjściem wiersza poleceń (stdin, stdout)
-import re   # Moduł do pracy z wyrażeniami regularnymi
-
-# Wyrażenie regularne do wyodrębnienia roku z daty w formacie "DD/MM/YYYY"
-p = re.compile(r'"\d+\/\d+\/(\d+)"')
 
 # kolumna z ligą
 LEAGUE_ID = 16
@@ -13,9 +9,8 @@ LEAGUE_ID = 16
 WAGE_EUR = 11
 AGE = 12
 
-# kolumna z wagą zawodniak
+# kolumna z wagą zawodnika
 WEIGHT_KG = 15
-#SUM_OVERWEIGHT = 0
 
 for line in sys.stdin:
     # Usuwamy białe znaki na początku i końcu oraz dzielimy linię na kolumny na podstawie srednikow:
@@ -26,6 +21,3 @@ for line in sys.stdin:
             age = values[AGE]
             league = values[LEAGUE_ID]
             print(f"{league.strip()}\t{wage.strip()}\t{age.strip()}")
-        #else: SUM_OVERWEIGHT += 1
-
-#print(f"Ilosc pilkarzy z waga minimum 100kg wynosila: {SUM_OVERWEIGHT}")

@@ -49,42 +49,28 @@ partialREDUCER = [
     "8\t500,19"
 ]
 
-current_league = None
-total_age = 0
-total_wage = 0
-total_players = 0
+league_sums = {}
 
 for line in partialREDUCER:
     try:
         league, values = line.strip().split("\t")
-        # Usunięcie nawiasów i podział na wage i age
-
-        wage, age = values.strip().split(",")  # Usunięcie nawiasów
+        wage, age = values.strip().split(",")
         league = int(league.strip())
         wage = int(wage.strip())
         age = int(age.strip())
-
     except ValueError:
-        continue  # Jeśli linia nie jest poprawnie sformatowana, przechodzimy do kolejnej
+        continue  # Jeśli linia nie jest poprawnie sformatowana, pomiń
 
-    # Jeśli aktualnie przetwarzamy tę samą ligę, co poprzednio
-    if current_league == league:
-        total_age += age
-        total_wage += wage
-        total_players += 1
+    # Sumowanie wartości dla tej ligi
+    if league not in league_sums:
+        league_sums[league] = [0, 0, 0]  # [total_wage, total_age, total_players]
 
-    else:
-        # Jeśli zmieniła się liga w nowej linijce, wypisujemy wynik poprzedniego rekordu
-        if current_league is not None:  # Sprawdzenie, czy jest jakaś poprzednia liga
-            print(f"{current_league}, {total_wage}, {total_age}, {total_players}")
-:
-        # Ustawiamy nowy rok i resetujemy zmienne dla nowego roku
-        current_league = league
-        total_wage = wage
-        total_age = age
-        total_players = 1
+    # Aktualizacja sum dla danej ligi
+    league_sums[league][0] += wage
+    league_sums[league][1] += age
+    league_sums[league][2] += 1
 
-        # Po zakończeniu pętli musimy jeszcze wypisać wynik dla ostatniego roku
-if current_league is not None:  # Sprawdzenie, czy jest jakaś liga do wypisania
-    print(f"{current_league}, {total_wage}, {total_age}, {total_players}")
-
+# Wypisujemy częściowe sumy dla każdej ligi
+for league, sums in league_sums.items():
+    total_wage, total_age, total_players = sums
+    print(f"{league}\t{total_wage},{total_age},{total_players}")
