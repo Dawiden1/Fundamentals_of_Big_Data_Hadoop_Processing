@@ -122,134 +122,13 @@ dawiden1@big-data-cluster-m:~$ hdfs dfs -ls
 Found 2 items
 drwxr-xr-x   - dawiden1 hadoop          0 2024-10-22 21:20 input
 drwxr-xr-x   - dawiden1 hadoop          0 2024-10-22 21:33 output
-dawiden1@big-data-cluster-m:~$ hdfs dfs rm output
-rm: Unknown command
-Did you mean -rm?  This command begins with a dash.
-Usage: hadoop fs [generic options]
-        [-appendToFile [-n] <localsrc> ... <dst>]
-        [-cat [-ignoreCrc] <src> ...]
-        [-checksum [-v] <src> ...]
-        [-chgrp [-R] GROUP PATH...]
-        [-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
-        [-chown [-R] [OWNER][:[GROUP]] PATH...]
-        [-concat <target path> <src path> <src path> ...]
-        [-copyFromLocal [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
-        [-copyToLocal [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... <localdst>]
-        [-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] [-e] [-s] <path> ...]
-        [-cp [-f] [-p | -p[topax]] [-d] [-t <thread count>] [-q <thread pool queue size>] <src> ... <dst>]
-        [-createSnapshot <snapshotDir> [<snapshotName>]]
-        [-deleteSnapshot <snapshotDir> <snapshotName>]
-        [-df [-h] [<path> ...]]
-        [-du [-s] [-h] [-v] [-x] <path> ...]
-        [-expunge [-immediate] [-fs <path>]]
-        [-find <path> ... <expression> ...]
-        [-get [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... <localdst>]
-        [-getfacl [-R] <path>]
-        [-getfattr [-R] {-n name | -d} [-e en] <path>]
-        [-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
-        [-head <file>]
-        [-help [cmd ...]]
-        [-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...]]
-        [-mkdir [-p] <path> ...]
-        [-moveFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
-        [-moveToLocal <src> <localdst>]
-        [-mv <src> ... <dst>]
-        [-put [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
-        [-renameSnapshot <snapshotDir> <oldName> <newName>]
-        [-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
-        [-rmdir [--ignore-fail-on-non-empty] <dir> ...]
-        [-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
-        [-setfattr {-n name [-v value] | -x name} <path>]
-        [-setrep [-R] [-w] <rep> <path> ...]
-        [-stat [format] <path> ...]
-        [-tail [-f] [-s <sleep interval>] <file>]
-        [-test -[defswrz] <path>]
-        [-text [-ignoreCrc] <src> ...]
-        [-touch [-a] [-m] [-t TIMESTAMP (yyyyMMdd:HHmmss) ] [-c] <path> ...]
-        [-touchz <path> ...]
-        [-truncate [-w] <length> <path> ...]
-        [-usage [cmd ...]]
-
-Generic options supported are:
--conf <configuration file>        specify an application configuration file
--D <property=value>               define a value for a given property
--fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
--jt <local|resourcemanager:port>  specify a ResourceManager
--files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
--libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
--archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
-
-The general command line syntax is:
-command [genericOptions] [commandOptions]
 
 dawiden1@big-data-cluster-m:~$ hdfs dfs -rm output
-rm: `output': Is a directory
-dawiden1@big-data-cluster-m:~$ hdfs dfs -rm /output
-rm: `/output': No such file or directory
-dawiden1@big-data-cluster-m:~$ hdfs dfs -rm ./output
-rm: `output': Is a directory
-dawiden1@big-data-cluster-m:~$ hdfs dfs -rm -p ./output
--rm: Illegal option -p
-Usage: hadoop fs [generic options]
-        [-appendToFile [-n] <localsrc> ... <dst>]
-        [-cat [-ignoreCrc] <src> ...]
-        [-checksum [-v] <src> ...]
-        [-chgrp [-R] GROUP PATH...]
-        [-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
-        [-chown [-R] [OWNER][:[GROUP]] PATH...]
-        [-concat <target path> <src path> <src path> ...]
-        [-copyFromLocal [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
-        [-copyToLocal [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... <localdst>]
-        [-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] [-e] [-s] <path> ...]
-        [-cp [-f] [-p | -p[topax]] [-d] [-t <thread count>] [-q <thread pool queue size>] <src> ... <dst>]
-        [-createSnapshot <snapshotDir> [<snapshotName>]]
-        [-deleteSnapshot <snapshotDir> <snapshotName>]
-        [-df [-h] [<path> ...]]
-        [-du [-s] [-h] [-v] [-x] <path> ...]
-        [-expunge [-immediate] [-fs <path>]]
-        [-find <path> ... <expression> ...]
-        [-get [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... <localdst>]
-        [-getfacl [-R] <path>]
-        [-getfattr [-R] {-n name | -d} [-e en] <path>]
-        [-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
-        [-head <file>]
-        [-help [cmd ...]]
-        [-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...]]
-        [-mkdir [-p] <path> ...]
-        [-moveFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
-        [-moveToLocal <src> <localdst>]
-        [-mv <src> ... <dst>]
-        [-put [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
-        [-renameSnapshot <snapshotDir> <oldName> <newName>]
-        [-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
-        [-rmdir [--ignore-fail-on-non-empty] <dir> ...]
-        [-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
-        [-setfattr {-n name [-v value] | -x name} <path>]
-        [-setrep [-R] [-w] <rep> <path> ...]
-        [-stat [format] <path> ...]
-        [-tail [-f] [-s <sleep interval>] <file>]
-        [-test -[defswrz] <path>]
-        [-text [-ignoreCrc] <src> ...]
-        [-touch [-a] [-m] [-t TIMESTAMP (yyyyMMdd:HHmmss) ] [-c] <path> ...]
-        [-touchz <path> ...]
-        [-truncate [-w] <length> <path> ...]
-        [-usage [cmd ...]]
+rm: 'output': Is a directory
 
-Generic options supported are:
--conf <configuration file>        specify an application configuration file
--D <property=value>               define a value for a given property
--fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
--jt <local|resourcemanager:port>  specify a ResourceManager
--files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
--libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
--archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
-
-The general command line syntax is:
-command [genericOptions] [commandOptions]
-
-Usage: hadoop fs [generic options] -rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...
 dawiden1@big-data-cluster-m:~$ hdfs dfs -rm -r ./output
 Deleted output
+
 dawiden1@big-data-cluster-m:~$ hadoop jar /usr/lib/hadoop/hadoop-streaming.jar     -input input     -output output     -mapper mapper.py     -reducer reducer.py     -combiner combiner.py     -file mapper.py     -file reducer.py     -file combiner.py
 2024-10-22 22:11:30,773 WARN streaming.StreamJob: -file option is deprecated, please use generic option -files instead.
 packageJobJar: [mapper.py, reducer.py, combiner.py] [/usr/lib/hadoop/hadoop-streaming-3.3.6.jar] /tmp/streamjob6383257172779215033.jar tmpDir=null
@@ -372,16 +251,18 @@ packageJobJar: [mapper.py, reducer.py, combiner.py] [/usr/lib/hadoop/hadoop-stre
         File Output Format Counters 
                 Bytes Written=889
 2024-10-22 22:14:38,026 INFO streaming.StreamJob: Output directory: output
+
 dawiden1@big-data-cluster-m:~$ hadoop dfs -ls ./output
 WARNING: Use of this script to execute dfs is deprecated.
 WARNING: Attempting to execute replacement "hdfs dfs" instead.
 
-^[[AFound 4 items
+Found 4 items
 -rw-r--r--   2 dawiden1 hadoop          0 2024-10-22 22:14 output/_SUCCESS
 -rw-r--r--   2 dawiden1 hadoop        383 2024-10-22 22:14 output/part-00000
 -rw-r--r--   2 dawiden1 hadoop        208 2024-10-22 22:14 output/part-00001
 -rw-r--r--   2 dawiden1 hadoop        298 2024-10-22 22:14 output/part-00002
-^[[Ddawiden1@big-data-cluster-mhadoop fs -copyToLocal ./output
+
+dawiden1@big-data-cluster-m hadoop fs -copyToLocal ./output
 dawiden1@big-data-cluster-m:~$ ls -l
 total 52
 -rwxr-xr-x 1 dawiden1 dawiden1   877 Oct 22 21:56 combiner.py
@@ -390,6 +271,7 @@ drwxr-xr-x 2 dawiden1 dawiden1  4096 Oct 22 21:12 datasource1
 -rwxr-xr-x 1 dawiden1 dawiden1   691 Oct 22 22:01 mapper.py
 drwxr-xr-x 2 dawiden1 dawiden1  4096 Oct 22 22:18 output
 -rwxr-xr-x 1 dawiden1 dawiden1  2018 Oct 22 21:55 reducer.py
+
 dawiden1@big-data-cluster-m:~$ gsutil mv output gs://bd-wsb-24-09-dm/projekt1/
 Copying file://output/part-00000 [Content-Type=application/octet-stream]...
 Removing file://output/part-00000...                                            
@@ -409,19 +291,7 @@ drwxr-xr-x 2 dawiden1 dawiden1  4096 Oct 22 21:12 datasource1
 -rwxr-xr-x 1 dawiden1 dawiden1   691 Oct 22 22:01 mapper.py
 drwxr-xr-x 2 dawiden1 dawiden1  4096 Oct 22 22:19 output
 -rwxr-xr-x 1 dawiden1 dawiden1  2018 Oct 22 21:55 reducer.py
-dawiden1@big-data-cluster-m:~$ cat output/
-cat: output/: Is a directory
-dawiden1@big-data-cluster-m:~$ ls output/
-dawiden1@big-data-cluster-m:~$ rm output/
-rm: cannot remove 'output/': Is a directory
-dawiden1@big-data-cluster-m:~$ rm -r output/
-dawiden1@big-data-cluster-m:~$ gsutil mv gs://bd-wsb-24-09-dm/projekt1/output
-CommandException: Wrong number of arguments for "cp" command.
-dawiden1@big-data-cluster-m:~$ gsutil cp gs://bd-wsb-24-09-dm/projekt1/output
-CommandException: Wrong number of arguments for "cp" command.
-dawiden1@big-data-cluster-m:~$ gsutil cp gs://bd-wsb-24-09-dm/projekt1/output .
-Omitting prefix "gs://bd-wsb-24-09-dm/projekt1/output/". (Did you mean to do cp -r?)
-CommandException: No URLs matched. Do the files you're operating on exist?
+
 dawiden1@big-data-cluster-m:~$ gsutil mv gs://bd-wsb-24-09-dm/projekt1/output .
 Copying gs://bd-wsb-24-09-dm/projekt1/output/_SUCCESS...
 Removing gs://bd-wsb-24-09-dm/projekt1/output/_SUCCESS...                       
@@ -430,9 +300,9 @@ Removing gs://bd-wsb-24-09-dm/projekt1/output/part-00000...
 Copying gs://bd-wsb-24-09-dm/projekt1/output/part-00001...
 Removing gs://bd-wsb-24-09-dm/projekt1/output/part-00001...                     
 Copying gs://bd-wsb-24-09-dm/projekt1/output/part-00002...
-Removing gs://bd-wsb-24-09-dm/projekt1/output/part-00002...                     
+Removing gs://bd-wsb-24-09-dm/projekt1/output/part-00002...
+Operation completed over 4 objects/889.0 B.
 
-Operation completed over 4 objects/889.0 B.                                      
 dawiden1@big-data-cluster-m:~$ ls -l
 total 52
 -rwxr-xr-x 1 dawiden1 dawiden1   877 Oct 22 21:56 combiner.py
@@ -441,13 +311,15 @@ drwxr-xr-x 2 dawiden1 dawiden1  4096 Oct 22 21:12 datasource1
 -rwxr-xr-x 1 dawiden1 dawiden1   691 Oct 22 22:01 mapper.py
 drwxr-xr-x 2 dawiden1 dawiden1  4096 Oct 22 22:22 output
 -rwxr-xr-x 1 dawiden1 dawiden1  2018 Oct 22 21:55 reducer.py
+
 dawiden1@big-data-cluster-m:~$ gsutil cp -r output gs://bd-wsb-24-09-dm/projekt1/
 Copying file://output/part-00000 [Content-Type=application/octet-stream]...
 Copying file://output/part-00001 [Content-Type=application/octet-stream]...     
 Copying file://output/_SUCCESS [Content-Type=application/octet-stream]...       
 Copying file://output/part-00002 [Content-Type=application/octet-stream]...     
 / [4 files][  889.0 B/  889.0 B]                                                
-Operation completed over 4 objects/889.0 B.                                      
+Operation completed over 4 objects/889.0 B.
+
 dawiden1@big-data-cluster-m:~$ cat output/part-00000
 14      8400,23,1394
 17      2413,25,1687

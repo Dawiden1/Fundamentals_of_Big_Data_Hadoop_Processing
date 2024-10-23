@@ -1,0 +1,37 @@
+gsutil mv gs://bd-wsb-24-09-dm/datasource1 gs://bd-wsb-24-09-dm/projekt1/	- przenoszenie plików wewnątrz gs://
+
+gsutil cp -r gs://bd-wsb-24-09-dm/datasource1 gs://bd-wsb-24-09-dm/projekt1/	- kopiowanie plików wewnątrz gs://
+
+gsutil cp -r output gs://bd-wsb-24-09-dm/projekt1/
+
+hdfs dfs -mkdir -p /input
+
+hdfs dfs -ls /output
+
+hdfs dfs -put ./datasource1/* /input
+
+hdfs dfs -cat /output/part-00000
+
+hdfs dfs -get /output /local/folder/output 	- kopiowanie plików z HDFS do lokalnego systemu plików
+
+hdfs dfs -rm -r /output		- usuwanie folderów
+
+hadoop jar /usr/lib/hadoop/hadoop-streaming.jar \
+    -input /input \
+    -output /output \
+    -mapper mapper.py \
+    -reducer reducer.py \
+    -combiner combiner.py \
+    -file mapper.py \
+    -file reducer.py \
+    -file combiner.py
+cat station.csv | python mapper.py | sort -k1,1 | python combiner.py | sort -k1,1 | python reducer.py
+cat input.csv | ./mapper.py | sort -k1,1 | ./combiner.py | sort -k1,1 | ./reducer.py
+cat input.csv | ./mapper.py | sort -k1,1 | ./combiner.py | sort -k1,1 | ./reducer.py > output.csv
+
+tr -d "\r" < mapper.py > temp.py && mv temp.py mapper.py
+
+chmod +x mapper.py reducer.py combiner.py
+
+hadoop fs -copyToLocal gs://bd-wsb-24-09-dm/projekt1/input.csv
+
