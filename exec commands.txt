@@ -1,3 +1,11 @@
+gcloud dataproc clusters create ${CLUSTER_NAME} --enable-component-gateway \
+--region ${REGION} --subnet default --public-ip-address \
+--master-machine-type n2-standard-4 --master-boot-disk-size 50 \
+--num-workers 2 --worker-machine-type n2-standard-2 --worker-boot-disk-size 50 \
+--image-version 2.2-debian12 --optional-components=ZEPPELIN \
+--project ${PROJECT_ID} --max-age=9h
+
+
 gsutil mv gs://bd-wsb-24-09-dm/datasource1 gs://bd-wsb-24-09-dm/projekt1/	- przenoszenie plików wewnątrz gs://
 
 gsutil cp -r gs://bd-wsb-24-09-dm/datasource1 gs://bd-wsb-24-09-dm/projekt1/	- kopiowanie plików wewnątrz gs://
@@ -30,6 +38,8 @@ cat input.csv | ./mapper.py | sort -k1,1 | ./combiner.py | sort -k1,1 | ./reduce
 cat input.csv | ./mapper.py | sort -k1,1 | ./combiner.py | sort -k1,1 | ./reducer.py > output.csv
 
 tr -d "\r" < mapper.py > temp.py && mv temp.py mapper.py
+tr -d "\r" < combiner.py > temp.py && mv temp.py combiner.py
+tr -d "\r" < reducer.py > temp.py && mv temp.py reducer.py
 
 chmod +x mapper.py reducer.py combiner.py
 

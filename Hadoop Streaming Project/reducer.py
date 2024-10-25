@@ -13,7 +13,7 @@ def output_result(league, sum_wage, sum_age, amount_of_players):
     if amount_of_players > 0:  # Sprawdzamy, czy mamy co najmniej jeden wpis dla danej ligi
         average_wage = int(sum_wage / amount_of_players)
         average_age = int(sum_age / amount_of_players)
-        print(f"{league}\t{average_wage},{average_age},{amount_of_players}")
+        print(f"{league},{average_wage},{average_age},{amount_of_players}")
 
 # Odczyt linii wejściowych (dostarczanych z Mappera)
 for line in sys.stdin:
